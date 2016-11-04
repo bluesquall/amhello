@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bluesquall/amhello.svg?branch=master)](https://travis-ci.org/bluesquall/amhello)
+
 This is a simple repository to demonstrate the GNU Autotools.
 
 I will use it as a minimal working example reference, and as a test-case for
