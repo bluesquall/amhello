@@ -4,7 +4,7 @@
 
 int main (void)
 {
-    puts ("Hello, cuel world!");
+    puts ("Hello, cruel world!");
     puts ("This is " PACKAGE_STRING ".");
     return EXIT_SUCCESS;
 }
