@@ -3,3 +3,9 @@ language: c
 compiler:
   - gcc
   - clang
+
+# start the autotools chain, because we won't track generated files in git
+before_script: autoreconf -i
+
+# Default is "./configure && make && make test", but no tests yet
+script: "./configure && make"
