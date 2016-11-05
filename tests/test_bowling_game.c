@@ -2,9 +2,9 @@
 // A test-driven development example
 // see http://www.slideshare.net/amritayan/test-driven-development-in-c
 
+#include "src/bowling_game.h"
+
 #include <assert.h>
-#include <stdbool.h>
-#include <stdlib.h>
 
 static void test_gutter_game (void)
 {
