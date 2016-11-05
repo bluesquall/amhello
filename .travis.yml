@@ -8,7 +8,9 @@ compiler:
 before_script: autoreconf -i
 
 # Default is:
-# script: "./configure && make && make test"
+#   script: "./configure && make && make test"
+# but autotools generates:
+script: "./configure && make && make check"
 
 after_success:
   - ./hello
