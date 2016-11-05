@@ -26,6 +26,17 @@ static void test_all_ones (void)
     assert( bowling_game_score() == 20 && "test_all_ones()" );
 }
 
+static void test_one_spare (void)
+{
+    bowling_game_init();
+    roll_many( 2, 0 );
+    roll_many( 2, 5 );
+    roll_many( 2, 3 );
+    roll_many( 14, 0 );
+    assert( bowling_game_score() == 19 && "test_all_ones()" );
+}
+
+
 int main (void)
 {
     test_gutter_game();
