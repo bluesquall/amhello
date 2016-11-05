@@ -2,7 +2,7 @@ language: c
 
 compiler:
   - gcc
-  - clang
+#  - clang
 
 # start the autotools chain, because we won't track generated files in git
 before_script: autoreconf -i
@@ -15,8 +15,8 @@ script: "./configure && make && make check"
 after_success:
   - ./hello
 
-after_failure:
-  - cat test-suite.log
+# after_failure:
+#   - cat test-suite.log
 
 after_script:
   - git clean -fd
