@@ -31,22 +31,36 @@ static bool is_strike (int frame)
     return roll[2*frame] == 10;
 }
 
+static int normal_frame_score(int frame)
+{
+    int start_of_frame = 2 * frame;
+    return roll[start_of_frame] + roll[start_of_frame + 1];
+}
+
+static int spare_bonus(int frame)
+{
+//            puts("spare bonus!");
+    int start_of_bonus = 2 * (frame + 1);
+    return roll[start_of_bonus];
+}
+
+static int strike_bonus(int frame)
+{
+//            puts("strike bonus!");
+    int start_of_bonus = 2 * (frame + 1);
+    return roll[start_of_bonus] + roll[start_of_bonus + 1];
+}
+
 int bowling_game_score (void)
 {
     int score = 0;
-    int r = 0;
     for (int f=0; f<MAX_FRAMES; ++f) {
 //        printf("frame %d: %d, %d\n", f, roll[2*f], roll[2*f + 1]);
-        int frame_score = 0;
-        frame_score += roll[r++]; // add the first roll
-        frame_score += roll[r++]; // add the second roll
-        score += frame_score;
+        score += normal_frame_score(f);
         if ( is_strike(f) ) {
-//            puts("strike!");
-            score += roll[r] + roll[r+1]; // add the next two rolls as bonus
+            score += strike_bonus(f);
         } else if ( is_spare(f) ) {
-//            puts("spare!");
-            score += roll[r]; // add the next roll bonus
+            score += spare_bonus(f);
         }
     }
 //    printf("score: %d\n", score);
