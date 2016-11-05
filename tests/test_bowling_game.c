@@ -41,5 +41,5 @@ int main (void)
 {
     test_gutter_game();
     test_all_ones();
-//REFACTOR    test_one_spare();
+    test_one_spare();
 }
