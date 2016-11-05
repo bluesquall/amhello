@@ -4,13 +4,12 @@
 
 #include "bowling_game.h"
 
-enum { max_rolls = 21 };
-static int roll[max_rolls] = { 0 };
+static int roll[MAX_ROLLS] = { 0 };
 static int current_roll = 0;
 
 void bowling_game_init (void)
 {
-    for (int i=0; i<max_rolls; i++)
+    for (int i=0; i<MAX_ROLLS; i++)
         roll[i] = 0;
     current_roll = 0;
 }
@@ -23,7 +22,9 @@ void bowling_game_roll (int pins)
 int bowling_game_score (void)
 {
     int score = 0;
-    for (int i=0; i<max_rolls; i++)
-        score += roll[i];
+    int r = 0;
+    for (int f=0; f<MAX_FRAMES; ++f)
+        score += roll[r] + roll[r+1];
+        r += 2;
     return score;
 }
