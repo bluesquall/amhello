@@ -4,5 +4,5 @@
 
 void bowling_game_init (void);
 void bowling_game_roll (int pins);
-void bowling_game_score (void);
+int bowling_game_score (void);
 
