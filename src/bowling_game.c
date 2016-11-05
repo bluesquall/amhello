@@ -23,8 +23,14 @@ int bowling_game_score (void)
 {
     int score = 0;
     int r = 0;
-    for (int f=0; f<MAX_FRAMES; ++f)
-        score += roll[r] + roll[r+1];
+    for (int f=0; f<MAX_FRAMES; ++f) {
+        if ( roll[r] + roll[r+1] == 10 ) {
+            score += 10 + roll[r+2];
+        } else {
+            score += roll[r] + roll[r+1];
+        }
         r += 2;
+    }
+    printf("score: %d\n", score);
     return score;
 }
