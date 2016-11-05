@@ -17,52 +17,51 @@ void bowling_game_init (void)
 void bowling_game_roll (int pins)
 {
     roll[current_roll++] = pins;
-    if ( pins == 10 )
-        current_roll++;
 }
 
-static bool is_spare(int frame )
+static bool is_spare(int frame_start )
 {
-    return roll[2*frame] + roll[2*frame + 1]== 10;
+    return roll[frame_start] + roll[frame_start + 1] == 10;
 }
 
-static bool is_strike (int frame)
+static bool is_strike (int frame_start)
 {
-    return roll[2*frame] == 10;
+    return roll[frame_start] == 10;
 }
 
-static int normal_frame_score(int frame)
+static int plain_frame_score(int frame_start)
 {
-    int start_of_frame = 2 * frame;
-    return roll[start_of_frame] + roll[start_of_frame + 1];
+    return roll[frame_start] + roll[frame_start + 1];
 }
 
-static int spare_bonus(int frame)
+static int spare_frame_score(int frame_start)
 {
-//            puts("spare bonus!");
-    int start_of_bonus = 2 * (frame + 1);
-    return roll[start_of_bonus];
+            puts("spare bonus!");
+    return roll[frame_start] + roll[frame_start + 1] + roll[frame_start + 2];
 }
 
-static int strike_bonus(int frame)
+static int strike_frame_score(int frame_start)
 {
-//            puts("strike bonus!");
-    int start_of_bonus = 2 * (frame + 1);
-    return roll[start_of_bonus] + roll[start_of_bonus + 1];
+            puts("strike bonus!");
+    return roll[frame_start] + roll[frame_start + 1] + roll[frame_start + 2];
 }
 
 int bowling_game_score (void)
 {
     int score = 0;
+    int frame_start_index = 0;
     for (int f=0; f<MAX_FRAMES; ++f) {
-//        printf("frame %d: %d, %d\n", f, roll[2*f], roll[2*f + 1]);
-        score += normal_frame_score(f);
-        if ( is_strike(f) ) {
-            score += strike_bonus(f);
-        } else if ( is_spare(f) ) {
-            score += spare_bonus(f);
+        if ( is_strike(frame_start_index) ) {
+            score += strike_frame_score(frame_start_index);
+            frame_start_index += 1;
+        } else if ( is_spare(frame_start_index) ) {
+            score += spare_frame_score(frame_start_index);
+            frame_start_index += 2;
+        } else {
+            score += plain_frame_score(frame_start_index);
+            frame_start_index += 2;
         }
     }
-//    printf("score: %d\n", score);
+    printf("score: %d\n", score);
     return score;
 }
