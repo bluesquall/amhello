@@ -12,7 +12,9 @@ void bowling_game_init (void)
 }
 
 void bowling_game_roll (int pins)
-{}
+{
+    score += pins;
+}
 
 int bowling_game_score (void)
 {
