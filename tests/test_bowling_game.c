@@ -41,4 +41,5 @@ int main (void)
 {
     test_gutter_game();
     test_all_ones();
+    test_one_spare();
 }
