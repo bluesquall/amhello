@@ -46,10 +46,18 @@ static void test_one_strike (void)
     assert( bowling_game_score() == 24 && "test_one_strike()" );
 }
 
+static void test_perfect_game (void)
+{
+    bowling_game_init();
+    roll_many( 12, 10 );
+    assert( bowling_game_score() == 300 && "test_perfect_game()" );
+}
+
 int main (void)
 {
     test_gutter_game();
     test_all_ones();
     test_one_spare();
     test_one_strike();
+    test_perfect_game();
 }
