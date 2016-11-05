@@ -14,7 +14,16 @@ static void test_gutter_game (void)
     assert( bowling_game_score() == 0 && "test_gutter_game()" );
 }
 
+static void test_all_ones (void)
+{
+    bowling_game_init();
+    for (int i=0; i<20; i++)
+        bowling_game_roll(1);
+    assert( bowling_game_score() == 20 && "test_all_ones()" );
+}
+
 int main (void)
 {
     test_gutter_game();
+    test_all_ones();
 }
