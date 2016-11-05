@@ -36,10 +36,20 @@ static void test_one_spare (void)
     assert( bowling_game_score() == 19 && "test_one_spare()" );
 }
 
+static void test_one_strike (void)
+{
+    bowling_game_init();
+    bowling_game_roll(10);
+    bowling_game_roll(3);
+    bowling_game_roll(4);
+    roll_many( 16, 0 );
+    assert( bowling_game_score() == 24 && "test_one_strike()" );
+}
 
 int main (void)
 {
     test_gutter_game();
     test_all_ones();
     test_one_spare();
+    test_one_strike();
 }
