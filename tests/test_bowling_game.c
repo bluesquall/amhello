@@ -33,7 +33,7 @@ static void test_one_spare (void)
     roll_many( 2, 5 );
     roll_many( 2, 3 );
     roll_many( 14, 0 );
-    assert( bowling_game_score() == 19 && "test_all_ones()" );
+    assert( bowling_game_score() == 19 && "test_one_spare()" );
 }
 
 
