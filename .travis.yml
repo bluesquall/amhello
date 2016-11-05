@@ -19,4 +19,4 @@ after_success:
 #   - cat test-suite.log
 
 after_script:
-  - git clean -fd
+  - git clean -fdX
